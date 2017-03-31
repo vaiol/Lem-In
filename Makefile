@@ -15,7 +15,7 @@ NAME    = lem-in
 CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
 
-SRCS    = 
+SRCS    = lem-in.c
 OBJS    = $(SRCS:.c=.o)
 
 all: $(NAME)
@@ -24,7 +24,7 @@ $(NAME): $(OBJS)
 	@printf "[CC] libft.a start:\n"
 	@make -C $(LIB)
 	@printf "[CC] libft.a finished successfull!\n"
-	@$(CC) $(CFLAGS) $(SRCS) $(LIB)libft.a -o $(NAME)
+	@$(CC) $(SRCS) $(LIB)libft.a -o $(NAME)
 	@printf "[CC] %s\n" $(NAME)
 
 .c.o:

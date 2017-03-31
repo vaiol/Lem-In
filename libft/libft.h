@@ -13,6 +13,8 @@
 #ifndef FT_LIBFT_H
 # define FT_LIBFT_H
 
+# define BUFF_SIZE 4096
+
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
@@ -44,6 +46,7 @@ char			*ft_strstr(const char *big, const char *little);
 int				ft_strcmp(const char *s1, const char *s2);
 char			*ft_strnew(size_t size);
 void			ft_strdel(char **as);
+void			ft_arrdel(char **arr);
 int				ft_strequ(char const *s1, char const *s2);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
@@ -57,5 +60,6 @@ double			ft_pow(double base, double ex);
 void			ft_print_memory(const void *addr, size_t size);
 int				ft_printf(const char *restrict format, ...);
 int				get_next_line(const int fd, char **line);
+char 			*ft_readfd(int fd);
 
 #endif
