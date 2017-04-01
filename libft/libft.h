@@ -60,6 +60,6 @@ double			ft_pow(double base, double ex);
 void			ft_print_memory(const void *addr, size_t size);
 int				ft_printf(const char *restrict format, ...);
 int				get_next_line(const int fd, char **line);
-char 			*ft_readfd(int fd);
+char			*ft_readfd(int fd);
 
 #endif

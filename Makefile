@@ -15,7 +15,8 @@ NAME    = lem-in
 CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
 
-SRCS    = lem-in.c
+SRCS    = lem_in.c parse_input.c add_element.c additional.c check_data.c    \
+find_ways.c free_memory.c matrix.c
 OBJS    = $(SRCS:.c=.o)
 
 all: $(NAME)
