@@ -87,7 +87,7 @@ static char			*get_value(unsigned long long hex, t_conversion *c)
 	return (str);
 }
 
-char				*handle_a(long double nbr, t_conversion *c)
+char				*pf_handle_a(long double nbr, t_conversion *c)
 {
 	unsigned long long	hex;
 	int					sign;

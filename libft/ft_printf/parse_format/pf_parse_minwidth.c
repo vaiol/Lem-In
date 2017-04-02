@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   pf_parse_minwidth.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/07 20:43:18 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/07 20:43:25 by astepano         ###   ########.fr       */
+/*   Created: 2017/04/02 19:30:51 by astepano          #+#    #+#             */
+/*   Updated: 2017/04/02 19:30:52 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "pf_parse_all.h"
 
-int		ft_printf(const char *restrict format, ...)
+size_t	pf_parse_minwidth(const char *f, size_t i, t_conversion *form,
+							va_list v)
 {
-	size_t		len;
-	size_t		i;
-	va_list		valist;
-
-	if (!format)
-		return (-1);
-	va_start(valist, format);
-	len = 0;
-	i = 0;
-	while (format[i])
+	if (ft_isdigit(f[i]))
 	{
-		if (format[i] == '%' || format[i] == '{')
+		form->minimum_width = ft_atoi(f + i);
+		while (ft_isdigit(f[i]))
+			i++;
+	}
+	else if (f[i] == '*')
+	{
+		form->minimum_width = va_arg(v, int);
+		if (form->minimum_width < 0)
 		{
-			pf_write(format + len, i - len);
-			len = pf_parse(format, i + 1, valist);
-			i = len - 1;
+			form->minimum_width = -form->minimum_width;
+			form->padding = '-';
 		}
 		i++;
 	}
-	pf_write(format + len, i - len);
-	va_end(valist);
-	return (pf_printed_count());
+	return (i);
 }

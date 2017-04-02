@@ -66,7 +66,7 @@ int		init(long double *nbr, t_arrays *a, int t, t_indecies **i)
 	return (0);
 }
 
-void	ftoa_conv(char *outstr, long double nbr, t_conversion *c)
+void	pf_ftoa_conv(char *outstr, long double nbr, t_conversion *c)
 {
 	uint32_t	b[(LDBL_MAX_EXP + LDBL_MANT_DIG) / 9 + 1];
 	t_arrays	*a;
