@@ -12,7 +12,7 @@
 
 #include "util.h"
 
-char	*strclear(char *str)
+char	*pf_strclear(char *str)
 {
 	free(str);
 	return (ft_strdup(""));

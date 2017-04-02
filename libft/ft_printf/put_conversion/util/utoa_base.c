@@ -31,7 +31,7 @@ static char	*utoa_puthash(char *result, int hash, char size, int b)
 	return (result);
 }
 
-char		*utoa_base(unsigned long long value, int b, char size, int hash)
+char		*pf_utoa_base(unsigned long long value, int b, char size, int hash)
 {
 	char				*base;
 	char				*result;

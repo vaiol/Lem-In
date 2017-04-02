@@ -18,6 +18,6 @@ char	*handle_precision(t_conversion *c, char *str, int l, size_t m)
 
 	count = c->precision - ((int)ft_strlen(str) - l);
 	if (count > 0)
-		str = strjoinchr_begin(str, '0', count, m);
+		str = pf_strjoinchr_begin(str, '0', count, m);
 	return (str);
 }

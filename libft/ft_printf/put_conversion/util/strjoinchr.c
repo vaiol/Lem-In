@@ -6,13 +6,14 @@
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 17:44:05 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/10 17:44:06 by astepano         ###   ########.fr       */
+/*   Updated: 2017/04/02 19:08:21 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 
-char	*strjoinchr(char *str, char const chr, int count, t_position position)
+char	*pf_strjoinchr(char *str, char const chr, int count,
+		t_position position)
 {
 	char	*result;
 	size_t	i;

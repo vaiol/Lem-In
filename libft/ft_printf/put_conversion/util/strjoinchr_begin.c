@@ -6,13 +6,14 @@
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 17:44:19 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/10 17:44:20 by astepano         ###   ########.fr       */
+/*   Updated: 2017/04/02 19:08:02 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 
-char	*strjoinchr_begin(char *str, char const chr, int count, size_t margin)
+char	*pf_strjoinchr_begin(char *str, char const chr, int count,
+		size_t margin)
 {
 	char	*result;
 	size_t	i;

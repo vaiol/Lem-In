@@ -29,11 +29,11 @@ char		*handle_minwidth(t_conversion *conv, char *str, size_t margin)
 	if (count > 0)
 	{
 		if (conv->padding == '-')
-			str = strjoinchr(str, ' ', count, END);
+			str = pf_strjoinchr(str, ' ', count, END);
 		else if (conv->padding == '0' && conv->precision < 0 && inan(conv, str))
-			str = strjoinchr_begin(str, '0', count, margin);
+			str = pf_strjoinchr_begin(str, '0', count, margin);
 		else
-			str = strjoinchr(str, ' ', count, BEGIN);
+			str = pf_strjoinchr(str, ' ', count, BEGIN);
 	}
 	return (str);
 }

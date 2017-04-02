@@ -17,7 +17,7 @@ void		pf_put_string(t_conversion *conv, va_list valist)
 	char	*str;
 
 	if (conv->size == L)
-		str = wstrtostr(va_arg(valist, wchar_t *), conv->precision);
+		str = pf_wstrtostr(va_arg(valist, wchar_t *), conv->precision);
 	else
 	{
 		if (!(str = va_arg(valist, char *)))

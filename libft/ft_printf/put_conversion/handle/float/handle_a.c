@@ -73,15 +73,15 @@ static char			*get_value(unsigned long long hex, t_conversion *c)
 	char	*str;
 	char	*tmp;
 
-	str = utoa_base(hex, 16, (char)c->type, 0);
+	str = pf_utoa_base(hex, 16, (char)c->type, 0);
 	tmp = str;
 	str = ft_strdup(str + 3);
 	free(tmp);
-	str = zerocut(str);
+	str = pf_zerocut(str);
 	len = (int)ft_strlen(str);
 	str = ft_strfjoin(get_prefix(hex, c, str), str, SECOND);
 	if (c->precision > len)
-		str = strjoinchr(str, '0', c->precision - len, END);
+		str = pf_strjoinchr(str, '0', c->precision - len, END);
 	else if (c->precision < len)
 		str = round_hex_cut(str, c);
 	return (str);

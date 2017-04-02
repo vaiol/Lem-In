@@ -40,7 +40,7 @@ static char	*createwint(wint_t wint, int len)
 	return (str);
 }
 
-char		*winttostr(wint_t wint)
+char		*pf_winttostr(wint_t wint)
 {
 	if (wint < 128)
 		return (createwint(wint, 1));

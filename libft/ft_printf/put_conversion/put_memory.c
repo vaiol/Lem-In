@@ -20,7 +20,7 @@ void	pf_put_memory(t_conversion *conv, va_list valist)
 	memory = (unsigned long long)va_arg(valist, void *);
 	conv->type = 'x';
 	conv->hashtag = 2;
-	str = utoa_base(memory, 16, conv->type, conv->hashtag);
+	str = pf_utoa_base(memory, 16, conv->type, conv->hashtag);
 	str = handle_precision(conv, str, conv->hashtag, (size_t)conv->hashtag);
 	if (!conv->precision && !memory)
 		str = ft_strcut(str, 2);

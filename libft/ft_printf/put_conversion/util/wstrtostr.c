@@ -12,7 +12,7 @@
 
 #include "util.h"
 
-char	*wstrtostr(wchar_t *s, int max_len)
+char	*pf_wstrtostr(wchar_t *s, int max_len)
 {
 	char	*wint_tmp;
 	char	*tmp;
@@ -26,7 +26,7 @@ char	*wstrtostr(wchar_t *s, int max_len)
 	while (s[size])
 	{
 		tmp = str;
-		wint_tmp = winttostr(s[size]);
+		wint_tmp = pf_winttostr(s[size]);
 		str = ft_strjoin(str, wint_tmp);
 		free(wint_tmp);
 		if (max_len >= 0 && (int)ft_strlen(str) > max_len)

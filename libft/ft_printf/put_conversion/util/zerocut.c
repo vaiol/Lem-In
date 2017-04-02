@@ -12,7 +12,7 @@
 
 #include "util.h"
 
-char	*zerocut(char *nbr)
+char	*pf_zerocut(char *nbr)
 {
 	int	i;
 

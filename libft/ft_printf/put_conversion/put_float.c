@@ -37,7 +37,7 @@ void		pf_put_float(t_conversion *conv, va_list valist)
 	if (conv->type == 'a' || conv->type == 'A')
 		margin += 2;
 	if (conv->sign && str[0] != '-')
-		str = strjoinchr(str, conv->sign, 1, BEGIN);
+		str = pf_strjoinchr(str, conv->sign, 1, BEGIN);
 	conv->precision = -1;
 	str = handle_minwidth(conv, str, margin);
 	putstr(str);

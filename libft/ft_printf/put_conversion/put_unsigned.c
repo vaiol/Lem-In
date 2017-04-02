@@ -16,10 +16,10 @@ static char	*get_bx(t_conversion *conv, unsigned long long nbr, int hash, int b)
 {
 	char	*str;
 
-	str = utoa_base(nbr, b, conv->type, hash);
+	str = pf_utoa_base(nbr, b, conv->type, hash);
 	str = handle_precision(conv, str, hash, (size_t)hash);
 	if (!conv->precision && !nbr)
-		str = strclear(str);
+		str = pf_strclear(str);
 	str = handle_minwidth(conv, str, (size_t)hash);
 	return (str);
 }
@@ -28,12 +28,12 @@ static char	*get_ou(t_conversion *conv, unsigned long long nbr, int h, int base)
 {
 	char	*str;
 
-	str = utoa_base(nbr, base, conv->type, h);
+	str = pf_utoa_base(nbr, base, conv->type, h);
 	if (conv->apostrophe)
 		str = handle_apostrophe(str);
 	str = handle_precision(conv, str, 0, 0);
 	if (!conv->precision && !conv->hashtag)
-		str = strclear(str);
+		str = pf_strclear(str);
 	str = handle_minwidth(conv, str, 0);
 	return (str);
 }
@@ -56,7 +56,7 @@ static char	*get_time(t_conversion *conv, unsigned long long nbr)
 	str = create_time(str, timet->sec, ":");
 	str = handle_precision(conv, str, 0, 0);
 	if (!conv->precision && !nbr)
-		str = strclear(str);
+		str = pf_strclear(str);
 	str = handle_minwidth(conv, str, 0);
 	return (str);
 }

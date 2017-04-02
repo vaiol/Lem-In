@@ -63,7 +63,7 @@ static char	*add_unprintable(char *str)
 		else if (str[i] == '\r')
 			str = add_str(str, i, "\\r");
 		else
-			str = add_str(str, i, utoa_base((unsigned)str[i], 16, 'x', 1));
+			str = add_str(str, i, pf_utoa_base((unsigned)str[i], 16, 'x', 1));
 		i = 0;
 	}
 	return (str);

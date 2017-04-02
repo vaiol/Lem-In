@@ -20,12 +20,12 @@ void		pf_put_signed(t_conversion *conv, long long number)
 	margin = (size_t)(conv->sign || number < 0);
 	nbr = ft_itoa_base(number, 10);
 	if (conv->sign && number >= 0)
-		nbr = strjoinchr(nbr, conv->sign, 1, BEGIN);
+		nbr = pf_strjoinchr(nbr, conv->sign, 1, BEGIN);
 	if (conv->apostrophe)
 		nbr = handle_apostrophe(nbr);
 	nbr = handle_precision(conv, nbr, (int)margin, margin);
 	if (!conv->precision && !number)
-		nbr = strclear(nbr);
+		nbr = pf_strclear(nbr);
 	nbr = handle_minwidth(conv, nbr, margin);
 	putstr(nbr);
 	free(nbr);
