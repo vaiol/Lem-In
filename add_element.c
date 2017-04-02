@@ -31,6 +31,7 @@ static int	put_way(t_info *in, int *new_way, int dist)
 	way[i] = (t_way *)malloc(sizeof(t_way));
 	way[i]->way = new_way;
 	way[i]->len = dist;
+	way[i]->ants = 0;
 	way[i + 1] = NULL;
 	if (in->ways)
 		free(in->ways);

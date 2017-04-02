@@ -67,7 +67,7 @@ t_info	*create_info(char **file)
 	t_info	*in;
 
 	in = (t_info *)malloc(sizeof(t_info));
-	in->ants = -1;
+	in->ants_count = -1;
 	in->start = -1;
 	in->end = -1;
 	in->rooms = NULL;

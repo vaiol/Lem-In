@@ -18,10 +18,18 @@
 
 # include "libft/libft.h"
 
+typedef struct	s_ant
+{
+	int			name;
+	int			way;
+	int			move;
+}				t_ant;
+
 typedef struct	s_way
 {
 	int			*way;
 	int			len;
+	int			ants;
 }				t_way;
 
 typedef struct	s_room
@@ -39,12 +47,13 @@ typedef struct	s_link
 
 typedef struct	s_info
 {
-	int			ants;
+	int			ants_count;
 	int			start;
 	int			end;
 	t_room		**rooms;
 	t_link		**links;
 	t_way		**ways;
+	t_ant		**ants;
 	char		**input;
 	int			**matrix;
 	int			size;
