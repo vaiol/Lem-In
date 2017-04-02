@@ -29,6 +29,11 @@ static void	remove_next(t_info *in)
 	}
 	if (in->ways)
 		free(in->ways);
+	i = 0;
+	while (in->ants && in->ants[i])
+		free(in->ants[i++]);
+	if (in->ants)
+		free(in->ants);
 }
 
 int			remove_all(t_info *in)

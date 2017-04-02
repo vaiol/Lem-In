@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/04 21:14:50 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/04 21:14:51 by astepano         ###   ########.fr       */
+/*   Created: 2017/04/02 18:50:05 by astepano          #+#    #+#             */
+/*   Updated: 2017/04/02 18:50:06 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_all.h"
 
-size_t	parse_minwidth(const char *f, size_t i, t_conversion *form, va_list v)
+size_t	pf_parse_minwidth(const char *f, size_t i, t_conversion *form,
+							va_list v)
 {
 	if (ft_isdigit(f[i]))
 	{

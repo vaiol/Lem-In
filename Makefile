@@ -16,7 +16,7 @@ CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
 
 SRCS    = lem_in.c parse_input.c add_element.c additional.c check_data.c    \
-find_ways.c free_memory.c matrix.c
+find_ways.c free_memory.c matrix.c print_result.c
 OBJS    = $(SRCS:.c=.o)
 
 all: $(NAME)

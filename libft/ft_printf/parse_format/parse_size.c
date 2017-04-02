@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/08 21:17:06 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/08 21:17:07 by astepano         ###   ########.fr       */
+/*   Created: 2017/04/02 18:50:22 by astepano          #+#    #+#             */
+/*   Updated: 2017/04/02 18:50:23 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_size(t_conversion *form, t_size new)
 	form->size = new;
 }
 
-size_t		parse_size(const char *f, size_t i, t_conversion *form)
+size_t		pf_parse_size(const char *f, size_t i, t_conversion *form)
 {
 	if (f[i] == 'h')
 	{

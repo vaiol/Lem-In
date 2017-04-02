@@ -43,7 +43,7 @@ typedef struct	s_conversion
 
 }				t_conversion;
 
-size_t			parse(const char *f, size_t i, va_list valist);
-void			put_conversion(t_conversion *conv, va_list valist);
+size_t			pf_parse(const char *f, size_t i, va_list valist);
+void			pf_put_conversion(t_conversion *conv, va_list valist);
 
 #endif

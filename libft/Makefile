@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 PRINTF	= ft_printf/
-PUTCONV	= put_conversion/
+PUTCONV	= pf_put_conversion/
 FLOAT	= $(PRINTF)$(PUTCONV)handle/float/
 UTIL	= $(PRINTF)$(PUTCONV)util/
 CONV	= $(PRINTF)$(PUTCONV)put_
@@ -39,7 +39,7 @@ PRINTF_SRCS	= $(PRINTF)ft_printf.c						\
 		  $(PARSE)all.c  $(PARSE)flags.c $(PARSE)type.c			\
 		  $(PARSE)minwidth.c $(PARSE)precision.c $(PARSE)size.c		\
 		  $(PARSE)brace.c $(HANDLE)minwidth.c $(HANDLE)precision.c	\
-		  $(HANDLE)apostrophe.c $(HANDLE)time.c				\
+		  $(HANDLE)apostrophe.c $(HANDLE)time.c	$(PARSE)additional.c \
 		  $(FLOAT)additionals.c $(FLOAT)float.c $(FLOAT)frexpl.c	\
 		  $(FLOAT)parsers.c $(FLOAT)rounder.c $(FLOAT)handle_e.c	\
 		  $(FLOAT)handle_f.c $(FLOAT)handle_g.c $(FLOAT)handle_a.c

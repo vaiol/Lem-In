@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/14 21:21:42 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/14 21:21:43 by astepano         ###   ########.fr       */
+/*   Created: 2017/04/02 18:49:43 by astepano          #+#    #+#             */
+/*   Updated: 2017/04/02 18:49:45 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static size_t	setfd(char *format, size_t i, va_list valist)
 	return (i);
 }
 
-size_t			parse_brace(const char *f, size_t i, va_list valist)
+size_t			pf_parse_brace(const char *f, size_t i, va_list valist)
 {
 	char	*format;
 	char	**colors;
@@ -93,12 +93,10 @@ size_t			parse_brace(const char *f, size_t i, va_list valist)
 		if ((len = equal(colors[index], format)))
 		{
 			putstr(escapes[index]);
-			return (i + len);
+			return (pf_free_brace(colors, escapes, i + len));
 		}
 		index++;
 	}
 	putstr("{");
-	free(colors);
-	free(escapes);
-	return (i);
+	return (pf_free_brace(colors, escapes, i));
 }

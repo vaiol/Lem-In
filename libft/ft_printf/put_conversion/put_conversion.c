@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_conversion.c                                   :+:      :+:    :+:   */
+/*   pf_put_conversion.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -56,7 +56,8 @@ static long long			get_signed(t_conversion *conv, va_list valist)
 	return (result);
 }
 
-void						put_conversion(t_conversion *conv, va_list valist)
+void						pf_put_conversion(t_conversion *conv,
+											  va_list valist)
 {
 	if (conv->type == 's')
 		put_string(conv, valist);

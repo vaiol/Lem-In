@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/04 21:14:40 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/04 21:14:41 by astepano         ###   ########.fr       */
+/*   Created: 2017/04/02 18:49:57 by astepano          #+#    #+#             */
+/*   Updated: 2017/04/02 18:49:58 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_all.h"
 
-size_t	parse_flags(const char *f, size_t i, t_conversion *form)
+size_t	pf_parse_flags(const char *f, size_t i, t_conversion *form)
 {
 	while (f[i])
 	{

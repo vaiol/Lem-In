@@ -6,7 +6,7 @@
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 21:14:20 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/10 17:29:12 by astepano         ###   ########.fr       */
+/*   Updated: 2017/04/02 18:49:35 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,27 @@ static t_conversion	*create_conversion(void)
 	return (conversion);
 }
 
-size_t				parse(const char *f, size_t i, va_list valist)
+size_t				pf_parse(const char *f, size_t i, va_list valist)
 {
 	size_t			tmp;
 	t_conversion	*form;
 
 	if (f[i - 1] == '{')
-		return (parse_brace(f, i, valist));
+		return (pf_parse_brace(f, i, valist));
 	form = create_conversion();
 	tmp = 0;
 	while (f[i] && tmp != i)
 	{
 		tmp = i;
-		i = parse_flags(f, i, form);
-		i = parse_minwidth(f, i, form, valist);
-		i = parse_precision(f, i, form, valist);
-		i = parse_size(f, i, form);
+		i = pf_parse_flags(f, i, form);
+		i = pf_parse_minwidth(f, i, form, valist);
+		i = pf_parse_precision(f, i, form, valist);
+		i = pf_parse_size(f, i, form);
 	}
 	if (f[i])
 	{
-		i = parse_type(f, i, form);
-		put_conversion(form, valist);
+		i = pf_parse_type(f, i, form);
+		pf_put_conversion(form, valist);
 	}
 	free(form);
 	return (i);

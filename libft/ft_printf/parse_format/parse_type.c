@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/07 19:26:25 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/07 19:26:27 by astepano         ###   ########.fr       */
+/*   Created: 2017/04/02 18:50:30 by astepano          #+#    #+#             */
+/*   Updated: 2017/04/02 18:50:32 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_all.h"
 
-size_t		parse_type(const char *f, size_t i, t_conversion *form)
+size_t		pf_parse_type(const char *f, size_t i, t_conversion *form)
 {
 	if (ft_strcchr("SDOUC", f[i]))
 	{
