@@ -12,11 +12,11 @@
 
 #include "put_conversion.h"
 
-char		*add_str(char *s1, size_t index, char *s2)
+static char	*add_str(char *s1, size_t index, char *s2)
 {
 	char	*result;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
 	result = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	i = -1;
@@ -40,7 +40,7 @@ char		*add_str(char *s1, size_t index, char *s2)
 	return (result);
 }
 
-char		*add_unprintable(char *str)
+static char	*add_unprintable(char *str)
 {
 	size_t	i;
 
@@ -69,7 +69,7 @@ char		*add_unprintable(char *str)
 	return (str);
 }
 
-void		put_unprintable(t_conversion *conv, va_list valist)
+void		pf_put_unprintable(t_conversion *conv, va_list valist)
 {
 	char	*str;
 

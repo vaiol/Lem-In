@@ -12,7 +12,7 @@
 
 #include "put_conversion.h"
 
-void		put_signed(t_conversion *conv, long long number)
+void		pf_put_signed(t_conversion *conv, long long number)
 {
 	size_t	margin;
 	char	*nbr;

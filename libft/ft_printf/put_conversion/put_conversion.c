@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_put_conversion.c                                   :+:      :+:    :+:   */
+/*   put_conversion.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/10 17:32:53 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/10 17:33:39 by astepano         ###   ########.fr       */
+/*   Created: 2017/04/02 19:03:14 by astepano          #+#    #+#             */
+/*   Updated: 2017/04/02 19:04:00 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,22 @@ static long long			get_signed(t_conversion *conv, va_list valist)
 }
 
 void						pf_put_conversion(t_conversion *conv,
-											  va_list valist)
+		va_list valist)
 {
 	if (conv->type == 's')
-		put_string(conv, valist);
+		pf_put_string(conv, valist);
 	else if (ft_strcchr("di", (char)conv->type))
-		put_signed(conv, get_signed(conv, valist));
+		pf_put_signed(conv, get_signed(conv, valist));
 	else if (ft_strcchr("ouxXbk", (char)conv->type))
-		put_unsigned(conv, get_unsigned(conv, valist));
+		pf_put_unsigned(conv, get_unsigned(conv, valist));
 	else if (conv->type == 'p')
-		put_memory(conv, valist);
+		pf_put_memory(conv, valist);
 	else if (conv->type == 'n')
-		put_printed(conv, valist);
+		pf_put_printed(conv, valist);
 	else if (ft_strcchr("fFeEgGaA", (char)conv->type))
-		put_float(conv, valist);
+		pf_put_float(conv, valist);
 	else if (conv->type == 'r')
-		put_unprintable(conv, valist);
+		pf_put_unprintable(conv, valist);
 	else
-		put_char(conv, valist);
+		pf_put_char(conv, valist);
 }

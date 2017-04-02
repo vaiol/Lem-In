@@ -12,7 +12,7 @@
 
 #include "put_conversion.h"
 
-void	put_printed(t_conversion *conv, va_list valist)
+void	pf_put_printed(t_conversion *conv, va_list valist)
 {
 	void	*n;
 

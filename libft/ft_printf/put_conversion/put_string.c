@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/04 21:28:29 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/04 21:28:31 by astepano         ###   ########.fr       */
+/*   Created: 2017/04/02 19:02:45 by astepano          #+#    #+#             */
+/*   Updated: 2017/04/02 19:02:47 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "put_conversion.h"
 
-void		put_string(t_conversion *conv, va_list valist)
+void		pf_put_string(t_conversion *conv, va_list valist)
 {
 	char	*str;
 

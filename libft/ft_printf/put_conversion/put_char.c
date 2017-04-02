@@ -12,7 +12,7 @@
 
 #include "put_conversion.h"
 
-void		put_char(t_conversion *conv, va_list valist)
+void	pf_put_char(t_conversion *conv, va_list valist)
 {
 	int		char_len;
 	int		count;

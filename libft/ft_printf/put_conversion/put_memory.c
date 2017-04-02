@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/08 19:28:43 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/10 17:31:58 by astepano         ###   ########.fr       */
+/*   Created: 2017/04/02 19:02:36 by astepano          #+#    #+#             */
+/*   Updated: 2017/04/02 19:02:37 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "put_conversion.h"
 
-void	put_memory(t_conversion *conv, va_list valist)
+void	pf_put_memory(t_conversion *conv, va_list valist)
 {
 	char				*str;
 	unsigned long long	memory;

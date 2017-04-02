@@ -24,7 +24,7 @@ static char	*handle_float(long double nbr, t_conversion *conv)
 	return (ft_strdup(tmp));
 }
 
-void		put_float(t_conversion *conv, va_list valist)
+void		pf_put_float(t_conversion *conv, va_list valist)
 {
 	size_t	margin;
 	char	*str;

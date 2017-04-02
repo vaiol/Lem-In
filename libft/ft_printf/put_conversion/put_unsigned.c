@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/04 21:28:36 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/04 21:28:38 by astepano         ###   ########.fr       */
+/*   Created: 2017/04/02 19:03:23 by astepano          #+#    #+#             */
+/*   Updated: 2017/04/02 19:03:25 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static char	*get_time(t_conversion *conv, unsigned long long nbr)
 	return (str);
 }
 
-void		put_unsigned(t_conversion *conv, unsigned long long number)
+void		pf_put_unsigned(t_conversion *conv, unsigned long long number)
 {
 	char	*nbr;
 	int		hash;
