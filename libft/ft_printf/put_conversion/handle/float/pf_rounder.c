@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rounder.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/14 20:46:57 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/14 20:46:59 by astepano         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "float.h"
+#include "pf_float.h"
 
 static void		round_sub(int e, int i, t_arrays *a)
 {
@@ -55,7 +43,7 @@ static void		round_one(int i, t_arrays *a, uint32_t x, t_indecies *in)
 		round_sub(in->e, i, a);
 }
 
-void			rounder(int p, int t, t_arrays *arrays, t_indecies *indecies)
+void			pf_rounder(int p, int t, t_arrays *arrays, t_indecies *indecies)
 {
 	int			i;
 	int			j;
@@ -120,7 +108,7 @@ static void		recur(char *nbr, int index, char *base)
 **     c->precision += 4;
 */
 
-char			*round_hex_cut(char *nbr, t_conversion *c)
+char			*pf_round_hex_cut(char *nbr, t_conversion *c)
 {
 	int		i;
 	char	*bassement;

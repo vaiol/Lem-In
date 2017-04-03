@@ -1,25 +1,13 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   handle_a.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/20 19:38:42 by astepano          #+#    #+#             */
-/*   Updated: 2017/03/20 19:39:00 by astepano         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "pf_float.h"
 
-#include "float.h"
-
-unsigned long long	ftohex(long double f, unsigned bits, unsigned eb, int *e)
+static unsigned long	ftohex(long double f, unsigned b, unsigned eb, int *e)
 {
 	long double			fnorm;
 	int					shift;
 	unsigned long long	sgn;
 	unsigned			signbits;
 
-	signbits = bits - eb - 1;
+	signbits = b - eb - 1;
 	if (f == 0.0)
 		return ((unsigned)(*e = 0));
 	fnorm = f;
@@ -37,10 +25,10 @@ unsigned long long	ftohex(long double f, unsigned bits, unsigned eb, int *e)
 	fnorm = fnorm - 1.0;
 	sgn = (unsigned long long)(fnorm * ((1LL << signbits) + 0.5f));
 	*e = shift;
-	return (((long long)(1 + ((1 << (eb)) - 1)) << (bits - eb - 1)) | sgn);
+	return (((long long)(1 + ((1 << (eb)) - 1)) << (b - eb - 1)) | sgn);
 }
 
-static char			*get_exponent(int e, t_conversion *c)
+static char		*get_exponent(int e, t_conversion *c)
 {
 	char	*result;
 	char	*postfix;
@@ -53,7 +41,7 @@ static char			*get_exponent(int e, t_conversion *c)
 	return (result);
 }
 
-static char			*get_prefix(unsigned long long n, t_conversion *c, char *s)
+static char		*get_prefix(unsigned long long n, t_conversion *c, char *s)
 {
 	char	*prefix;
 
@@ -67,7 +55,7 @@ static char			*get_prefix(unsigned long long n, t_conversion *c, char *s)
 	return (prefix);
 }
 
-static char			*get_value(unsigned long long hex, t_conversion *c)
+static char		*get_value(unsigned long long hex, t_conversion *c)
 {
 	int		len;
 	char	*str;
@@ -83,11 +71,11 @@ static char			*get_value(unsigned long long hex, t_conversion *c)
 	if (c->precision > len)
 		str = pf_strjoinchr(str, '0', c->precision - len, END);
 	else if (c->precision < len)
-		str = round_hex_cut(str, c);
+		str = pf_round_hex_cut(str, c);
 	return (str);
 }
 
-char				*pf_handle_a(long double nbr, t_conversion *c)
+char			*pf_handle_a(long double nbr, t_conversion *c)
 {
 	unsigned long long	hex;
 	int					sign;
@@ -102,7 +90,7 @@ char				*pf_handle_a(long double nbr, t_conversion *c)
 		sign = 1;
 	}
 	if (nbr == INFINITY || nbr != nbr)
-		return (infin(nbr, c, sign));
+		return (pf_infin(nbr, c, sign));
 	if (nbr == 0.0 && c->precision < 0)
 		c->precision = 0;
 	hex = ftohex(nbr, 64, 11, &e);

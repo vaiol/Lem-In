@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*split_line(char **str)
+static char	*split_line(char **str)
 {
 	char	*input;
 	char	*result;
@@ -33,7 +33,7 @@ char	*split_line(char **str)
 	return (result);
 }
 
-char	*readstr(int fd)
+static char	*readstr(int fd)
 {
 	ssize_t	size;
 	char	buffer[BUFF_SIZE + 1];
@@ -47,7 +47,7 @@ char	*readstr(int fd)
 		return (NULL);
 }
 
-void	cleanfd(t_lines **begin, int fd)
+static void	cleanfd(t_lines **begin, int fd)
 {
 	t_lines	*node;
 	t_lines	*prev;
@@ -74,7 +74,7 @@ void	cleanfd(t_lines **begin, int fd)
 	free(node);
 }
 
-int		createfd(t_lines **begin, int fd)
+int			gnl_createfd(t_lines **begin, int fd)
 {
 	t_lines	*new_node;
 	t_lines	*node;
@@ -103,7 +103,7 @@ int		createfd(t_lines **begin, int fd)
 	return (1);
 }
 
-char	*get_line(int fd, t_lines **begin)
+char		*gnl_get_line(int fd, t_lines **begin)
 {
 	char	*result;
 	char	*buff;

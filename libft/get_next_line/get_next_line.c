@@ -18,12 +18,12 @@ int		get_next_line(const int fd, char **line)
 
 	if (read(fd, NULL, 0) < 0)
 		return (-1);
-	if (!createfd(&begin_list, fd))
+	if (!gnl_createfd(&begin_list, fd))
 	{
 		*line = NULL;
 		return (0);
 	}
-	*line = get_line(fd, &begin_list);
+	*line = gnl_get_line(fd, &begin_list);
 	if (*line)
 		return (1);
 	else

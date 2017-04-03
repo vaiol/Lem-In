@@ -21,7 +21,7 @@ typedef struct		s_lines
 	struct s_lines	*next;
 }					t_lines;
 
-int					createfd(t_lines **begin, int fd);
-char				*get_line(int fd, t_lines **begin);
+int					gnl_createfd(t_lines **begin, int fd);
+char				*gnl_get_line(int fd, t_lines **begin);
 
 #endif

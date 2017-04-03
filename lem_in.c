@@ -39,6 +39,5 @@ int		main(void)
 	write_file(file, l);
 	print_result(in, l);
 	remove_all(in);
-	sleep(10);
 	return (0);
 }

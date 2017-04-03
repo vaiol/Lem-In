@@ -11,14 +11,14 @@
 # **************************************************************************** #
 
 PRINTF	= ft_printf/
-PUTCONV	= pf_put_conversion/
-FLOAT	= $(PRINTF)$(PUTCONV)handle/float/
-UTIL	= $(PRINTF)$(PUTCONV)util/
-CONV	= $(PRINTF)$(PUTCONV)put_
-HANDLE	= $(PRINTF)$(PUTCONV)handle/handle_
-PUT	= $(PRINTF)$(PUTCONV)put/
-PARSE	= $(PRINTF)parse_format/parse_
-GNL	= get_next_line
+PUTCONV	= put_conversion/
+FLOAT	= $(PRINTF)$(PUTCONV)handle/float/pf_
+UTIL	= $(PRINTF)$(PUTCONV)util/pf_
+CONV	= $(PRINTF)$(PUTCONV)pf_put_
+HANDLE	= $(PRINTF)$(PUTCONV)handle/pf_handle_
+PUT	    = $(PRINTF)$(PUTCONV)put/pf_
+PARSE	= $(PRINTF)parse_format/pf_parse_
+GNL	    = get_next_line
 
 LIB_SRCS	= ft_memset.c ft_strlen.c ft_strdup.c ft_strchr.c ft_strrchr.c	\
 		  ft_strstr.c  ft_strcmp.c ft_atoi.c ft_isalpha.c ft_isdigit.c	\
@@ -29,7 +29,7 @@ LIB_SRCS	= ft_memset.c ft_strlen.c ft_strdup.c ft_strchr.c ft_strrchr.c	\
 		  ft_strfjoin.c ft_strichr.c ft_arrdel.c ft_readfd.c
 GNL_SRCS	= $(GNL)/$(GNL).c $(GNL)/gnl_additionals.c
 PRINTF_SRCS	= $(PRINTF)ft_printf.c						\
-		  $(PUT)pf_putstr.c $(PUT)pf_write.c $(PUT)pf_printed_count.c		\
+		  $(PUT)putstr.c $(PUT)write.c $(PUT)printed_count.c		\
 		  $(UTIL)strjoinchr_begin.c $(UTIL)strjoinchr.c			\
 		  $(UTIL)winttostr.c $(UTIL)wstrtostr.c $(UTIL)utoa_base.c	\
 		  $(UTIL)strclear.c $(UTIL)zerocut.c				\

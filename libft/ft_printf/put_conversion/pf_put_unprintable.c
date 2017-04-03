@@ -21,7 +21,7 @@ static char	*add_str(char *s1, size_t index, char *s2)
 	result = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	i = -1;
 	j = 0;
-	while (++i < index)
+	while (++i < (int)index)
 		result[i] = s1[i];
 	while (s2[j])
 	{
