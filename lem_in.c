@@ -14,16 +14,12 @@
 
 void	print_result(t_info *in, int last)
 {
-	int	moves;
-
 	if (last == 0)
 		return ;
 	create_ants(in);
-	output_ways(in);
-	moves = 0;
+	ft_printf("\n");
 	while (print_ants(in))
-		moves++;
-	ft_printf("{green}MOVES: %d{eoc}\n", moves);
+		ft_printf("\n");
 }
 
 int		main(void)

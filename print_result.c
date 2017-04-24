@@ -81,7 +81,6 @@ int			print_ants(t_info *in)
 		}
 		i++;
 	}
-	ft_printf("\n");
 	return (exist);
 }
 
