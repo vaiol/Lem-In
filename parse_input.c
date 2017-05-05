@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "visu_hex.h"
 
 static int	get_room(t_info *in, char *name)
 {

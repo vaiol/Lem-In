@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "visu_hex.h"
 
 static int	put_way(t_info *in, int *new_way, int dist)
 {

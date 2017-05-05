@@ -14,9 +14,17 @@
 # define LEM_IN_H
 
 # define FD 0
+# define MAP_SIZE 50
+# define MAX_VLINK_LEN 20
 # define INFINITY 100000
 
 # include "libft/libft.h"
+
+typedef struct	s_coord
+{
+	int			x;
+	int			y;
+}				t_coord;
 
 typedef struct	s_ant
 {
@@ -45,11 +53,20 @@ typedef struct	s_link
 	int			room2;
 }				t_link;
 
+typedef struct	s_vlink
+{
+	t_coord		coords[MAX_VLINK_LEN];
+	char		e[MAX_VLINK_LEN];
+	t_room		*end;
+	int			len;
+}				t_vlink;
+
 typedef struct	s_info
 {
 	int			ants_count;
 	int			start;
 	int			end;
+	t_vlink		*vlink;
 	t_room		**rooms;
 	t_link		**links;
 	t_way		**ways;
@@ -80,5 +97,14 @@ void			create_ants(t_info *in);
 void			remove_vertices(t_info *in, int w);
 int				remove_all(t_info *in);
 void			remove_additional(int *paste, int *distance, int *way);
+void			put_link_rec(t_info *in, t_room *r1, t_room *r2, char **map);
+void			recursion(t_info *in, t_vlink *vlink, char **map);
+int				is_end(char element, int x, int y, t_room *r2);
+t_vlink			*best_vlink(t_info *in);
+void			add_vlink(t_info *in, t_vlink *vlink);
+t_vlink			*create_vlink(char e, t_coord prev, t_coord next, t_room *room);
+void			start_left(t_info *in, t_room *r1, t_room *r2, char **map);
+void			start_right(t_info *in, t_room *r1, t_room *r2, char **map);
+void			start_side(t_info *in, t_room *r1, t_room *r2, char **map);
 
 #endif

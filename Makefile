@@ -11,11 +11,11 @@
 # **************************************************************************** #
 
 LIB     = libft/
-NAME    = lem-in
+NAME    = visu-hex
 CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
 
-SRCS    = lem_in.c parse_input.c add_element.c additional.c check_data.c    \
+SRCS    = visu_additionals.c visu_start.c visu_isend.c visu.c visu_hex.c parse_input.c add_element.c additional.c check_data.c    \
 find_ways.c free_memory.c matrix.c print_result.c
 OBJS    = $(SRCS:.c=.o)
 
