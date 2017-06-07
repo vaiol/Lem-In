@@ -1,0 +1,14 @@
+void	print_result(t_info *in, int last)
+{
+//	int	moves;
+
+	if (last == 0)
+		return ;
+	create_ants(in);
+//	output_ways(in);
+	ft_printf("\n");
+//	moves = 0;
+	while (print_ants(in))
+		ft_printf("\n");
+//	ft_printf("{green}MOVES: %d{eoc}\n", moves);
+}
