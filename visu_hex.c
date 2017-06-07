@@ -351,7 +351,7 @@ void	put_link_vh(t_info *in, char **map, t_link *link)
 	{
 		if (diagonal(r1, r2, map))
 			return;
-		put_link_rec(in, r1, r2, map);
+//		put_link_rec(in, r1, r2, map);
 	}
 }
 
