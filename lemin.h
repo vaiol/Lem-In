@@ -14,9 +14,16 @@
 # define LEM_IN_H
 
 # define FD 0
+# define MAP_SIZE 80
 # define INFINITY 100000
 
 # include "libft/libft.h"
+
+typedef struct	s_coord
+{
+	int			x;
+	int			y;
+}				t_coord;
 
 typedef struct	s_ant
 {
@@ -45,6 +52,12 @@ typedef struct	s_link
 	int			room2;
 }				t_link;
 
+typedef struct	s_diff
+{
+	int			*ways;
+	int			len;
+}				t_diff;
+
 typedef struct	s_info
 {
 	int			ants_count;
@@ -54,6 +67,7 @@ typedef struct	s_info
 	t_link		**links;
 	t_way		**ways;
 	t_ant		**ants;
+	t_diff		**diffs;
 	char		**input;
 	int			**matrix;
 	int			size;
@@ -69,16 +83,21 @@ char			**read_file(void);
 void			write_file(char **file, int last_line);
 int				add_link(t_info *in, int room1, int room2);
 int				add_room(t_info *in, char **arr);
-int				add_way(t_info *in, int *way, int distance);
+int				add_way(t_info *in, int *way, int len);
 int				add_command(t_info *in, int i, int room);
 int				parse_input(t_info *in);
-void			build_matrix(t_info *in);
-int				find_ways(t_info *in, int last);
 void			output_ways(t_info *in);
 int				print_ants(t_info *in);
 void			create_ants(t_info *in);
-void			remove_vertices(t_info *in, int w);
 int				remove_all(t_info *in);
-void			remove_additional(int *paste, int *distance, int *way);
+int				find_all_ways(t_info *in, int last);
+void			get_best_ways(t_info *in);
+void			build_matrix(t_info *in);
+int				visu_diagonal_line(t_room *r1, t_room *r2, char **map);
+int				visu_check(int y, int x, char **map);
+int				visu_check_left(int y, int x, char **map);
+int				visu_check_right(int y, int x, char **map);
+void			visu_put_link(t_info *in, char **map, t_link *link);
+void			visu_put_map(t_info *in);
 
 #endif

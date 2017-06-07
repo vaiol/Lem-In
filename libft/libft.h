@@ -14,6 +14,7 @@
 # define FT_LIBFT_H
 
 # define BUFF_SIZE 4096
+# define ABS(x)  ( (x<0) ? -(x) : (x) )
 
 # include <unistd.h>
 # include <string.h>

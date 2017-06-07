@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "lemin.h"
 
 static void	remove_next(t_info *in)
 {

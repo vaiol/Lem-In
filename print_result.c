@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "lemin.h"
 
 void		output_ways(t_info *in)
 {
@@ -31,7 +31,7 @@ void		output_ways(t_info *in)
 		{
 			if (j > 0)
 				ft_printf("->");
-			ft_printf("%d", in->ways[i]->way[j]);
+			ft_printf("%s", in->rooms[in->ways[i]->way[j]]->name);
 			j++;
 		}
 		ft_printf("{eoc}\n");
@@ -63,9 +63,11 @@ int			print_ants(t_info *in)
 {
 	int	exist;
 	int	i;
+	int	ant;
 
 	i = 0;
 	exist = 0;
+	ant = 1;
 	while (i < in->ants_count)
 	{
 		if (check_ant(in, i))
@@ -107,18 +109,29 @@ static int	get_bestway(t_info *in)
 
 void		create_ants(t_info *in)
 {
+	int	j;
 	int	i;
 
 	in->ants = (t_ant **)malloc(sizeof(t_ant *) * (in->ants_count + 1));
 	i = 0;
+	while (i++ < in->ants_count)
+		in->ways[get_bestway(in)]->ants++;
+	i = 0;
 	while (i < in->ants_count)
 	{
-		in->ants[i] = (t_ant *)malloc(sizeof(t_ant));
-		in->ants[i]->move = 1;
-		in->ants[i]->name = i + 1;
-		in->ants[i]->way = get_bestway(in);
-		in->ways[in->ants[i]->way]->ants++;
-		i++;
+		j = 0;
+		while (in->ways[j])
+		{
+			if (in->ways[j]->ants && i < in->ants_count)
+			{
+				in->ants[i] = (t_ant *)malloc(sizeof(t_ant));
+				in->ants[i]->move = 1;
+				in->ants[i]->name = i + 1;
+				in->ants[i]->way = j;
+				i++;
+			}
+			j++;
+		}
 	}
 	in->ants[i] = NULL;
 }

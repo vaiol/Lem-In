@@ -10,61 +10,76 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "lemin.h"
 
 static int	put_way(t_info *in, int *new_way, int dist)
 {
-	t_way	**way;
+	t_way	**ways;
 	int		i;
 	int		len;
 
 	len = 0;
 	while (in->ways && in->ways[len])
 		len++;
-	way = (t_way **)malloc(sizeof(t_way *) * (len + 2));
+	ways = (t_way **)malloc(sizeof(t_way *) * (len + 2));
 	i = 0;
 	while (i < len)
 	{
-		way[i] = in->ways[i];
+		ways[i] = in->ways[i];
 		i++;
 	}
-	way[i] = (t_way *)malloc(sizeof(t_way));
-	way[i]->way = new_way;
-	way[i]->len = dist;
-	way[i]->ants = 0;
-	way[i + 1] = NULL;
+	ways[i] = (t_way *)malloc(sizeof(t_way));
+	ways[i]->way = new_way;
+	ways[i]->len = dist;
+	ways[i]->ants = 0;
+	ways[i + 1] = NULL;
 	if (in->ways)
 		free(in->ways);
-	in->ways = way;
+	in->ways = ways;
 	return (i);
 }
 
-int			add_way(t_info *in, int *way, int distance)
+int			add_way(t_info *in, int *way, int len)
 {
 	int *new_way;
 	int	i;
-	int j;
 
-	new_way = (int *)malloc(sizeof(int) * (distance));
-	j = 0;
-	i = in->end;
-	while (i != in->start)
-	{
-		new_way[j] = i;
-		i = way[i];
-		j++;
-	}
-	new_way[j] = in->start;
+	new_way = (int *)malloc(sizeof(int) * (len));
 	i = 0;
-	while (i < (distance / 2))
+	while (i < len)
 	{
-		j = new_way[i];
-		new_way[i] = new_way[distance - i - 1];
-		new_way[distance - i - 1] = j;
+		new_way[i] = way[i];
 		i++;
 	}
-	return (put_way(in, new_way, distance));
+	return (put_way(in, new_way, len));
 }
+
+//int			add_way(t_info *in, int *way, int distance)
+//{
+//	int *new_way;
+//	int	i;
+//	int j;
+//
+//	new_way = (int *)malloc(sizeof(int) * (distance));
+//	j = 0;
+//	i = in->end;
+//	while (i != in->start)
+//	{
+//		new_way[j] = i;
+//		i = way[i];
+//		j++;
+//	}
+//	new_way[j] = in->start;
+//	i = 0;
+//	while (i < (distance / 2))
+//	{
+//		j = new_way[i];
+//		new_way[i] = new_way[distance - i - 1];
+//		new_way[distance - i - 1] = j;
+//		i++;
+//	}
+//	return (put_way(in, new_way, distance));
+//}
 
 int			add_link(t_info *in, int room1, int room2)
 {

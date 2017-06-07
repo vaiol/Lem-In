@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "lemin.h"
 
 void	remove_vertices(t_info *in, int w)
 {
@@ -73,6 +73,8 @@ t_info	*create_info(char **file)
 	in->rooms = NULL;
 	in->links = NULL;
 	in->ways = NULL;
+	in->ants = NULL;
+	in->matrix = NULL;
 	in->input = clean_input(file);
 	return (in);
 }
