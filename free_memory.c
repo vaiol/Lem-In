@@ -12,6 +12,7 @@
 
 #include "lemin.h"
 
+
 static void	remove_next(t_info *in)
 {
 	int	i;
@@ -22,13 +23,13 @@ static void	remove_next(t_info *in)
 	if (in->matrix)
 		free(in->matrix);
 	i = 0;
-	while (in->ways && in->ways[i])
+	while (in->all_ways && in->all_ways[i])
 	{
-		free(in->ways[i]->way);
-		free(in->ways[i++]);
+		free(in->all_ways[i]->way);
+		free(in->all_ways[i++]);
 	}
-	if (in->ways)
-		free(in->ways);
+	if (in->all_ways)
+		free(in->all_ways);
 	i = 0;
 	while (in->ants && in->ants[i])
 		free(in->ants[i++]);

@@ -72,6 +72,12 @@ typedef struct	s_info
 	char		**input;
 	int			**matrix;
 	int			size;
+	int			put_map;
+	int			put_moves;
+	int 		put_ways;
+	int			put_all_ways;
+	int			put_hide;
+	int			put_clean;
 }				t_info;
 
 int				iscommand(char *str);
@@ -81,12 +87,13 @@ int				room_exist(t_info *in, char **arr);
 char			**clean_input(char **file);
 t_info			*create_info(char **file);
 char			**read_file(void);
-void			write_file(char **file, int last_line);
+void			write_file(t_info *in, char **file, int last_line);
 int				add_link(t_info *in, int room1, int room2);
 int				add_room(t_info *in, char **arr);
 int				add_way(t_info *in, int *way, int len);
 int				add_command(t_info *in, int i, int room);
 int				parse_input(t_info *in);
+void			output_all_ways(t_info *in);
 void			output_ways(t_info *in);
 int				print_ants(t_info *in);
 void			create_ants(t_info *in);

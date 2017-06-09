@@ -78,6 +78,12 @@ t_info	*create_info(char **file)
 	in->ants = NULL;
 	in->matrix = NULL;
 	in->input = clean_input(file);
+	in->put_all_ways = 0;
+	in->put_hide = 0;
+	in->put_map = 0;
+	in->put_moves = 0;
+	in->put_ways = 0;
+	in->put_clean = 0;
 	return (in);
 }
 
@@ -92,7 +98,7 @@ char	**read_file(void)
 	return (input);
 }
 
-void	write_file(char **file, int last_line)
+void write_file(t_info *in, char **file, int last_line)
 {
 	int	i;
 
@@ -106,10 +112,12 @@ void	write_file(char **file, int last_line)
 	{
 		if (iscomment(file[i]))
 			last_line++;
-		if (i < last_line)
+		if (!in->put_hide && (!in->put_clean || !iscomment(file[i])) && i < last_line)
 			ft_printf("%s\n", file[i]);
 		free(file[i]);
 		i++;
 	}
+	if (!in->put_hide)
+		ft_printf("\n");
 	free(file);
 }

@@ -113,5 +113,6 @@ void		find_diffs(t_info *in)
 		recursion(in, arr, 0, i);
 		i++;
 	}
+	free(arr);
 }
 

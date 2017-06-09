@@ -47,8 +47,37 @@ void		output_ways(t_info *in)
 	int	i;
 
 	i = 0;
+	sort_all_ways(in->ways);
+	ft_printf("{red}SELECTED WAYS:{eoc}\n");
+	while (in->ways && in->ways[i])
+	{
+		if (in->ways[i]->ants)
+			ft_printf("{green}");
+		else
+			ft_printf("{red}");
+		ft_printf("%d: ", i + 1);
+		j = 0;
+		while (j < in->ways[i]->len)
+		{
+			if (j > 0)
+				ft_printf("->");
+			ft_printf("%s", in->rooms[in->ways[i]->way[j]]->name);
+			j++;
+		}
+		ft_printf("{eoc}\n");
+		i++;
+	}
+	ft_printf("\n");
+}
+
+void		output_all_ways(t_info *in)
+{
+	int	j;
+	int	i;
+
+	i = 0;
 	sort_all_ways(in->all_ways);
-	ft_printf("\n{red}ALL WAYS:{eoc}\n");
+	ft_printf("{red}ALL WAYS:{eoc}\n");
 	while (in->all_ways && in->all_ways[i])
 	{
 		if (in->all_ways[i]->ants)

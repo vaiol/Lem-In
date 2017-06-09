@@ -1,4 +1,4 @@
-10
+100
 ##start
 0 16 0
 1 1 5
@@ -45,14 +45,13 @@
 12-15
 13-14
 14-15
-#end
+
+##end1
 ##ways
 ##map
 ##moves
 ##allways
-##debug
-##hideinput
-##hideants
+##hide
 
 5-8
 6-10

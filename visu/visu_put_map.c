@@ -49,6 +49,7 @@ static void	print_map(char **map)
 		free(map[i]);
 		i++;
 	}
+	ft_printf("\n");
 	free(map);
 }
 
