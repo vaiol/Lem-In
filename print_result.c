@@ -175,22 +175,41 @@ void		create_ants(t_info *in)
 	i = 0;
 	while (i++ < in->ants_count)
 		in->ways[get_bestway(in)]->ants++;
+
+
 	i = 0;
 	while (i < in->ants_count)
 	{
 		j = 0;
 		while (in->ways[j])
 		{
-			if (in->ways[j]->ants && i < in->ants_count)
+			if (in->ways[j]->ants > 0 && i < in->ants_count)
 			{
 				in->ants[i] = (t_ant *)malloc(sizeof(t_ant));
 				in->ants[i]->move = 1;
 				in->ants[i]->name = i + 1;
 				in->ants[i]->way = j;
+				in->ways[j]->ants--;
 				i++;
+				ft_printf("WAYLEN: %d, ANTS: %d\n", in->ways[j]->len, in->ways[j]->ants);
 			}
 			j++;
 		}
 	}
 	in->ants[i] = NULL;
+	i = 0;
+	while (in->ways[i])
+	{
+		in->ways[i]->ants = 0;
+		i++;
+	}
+	i = 0;
+	while (i++ < in->ants_count)
+		in->ways[get_bestway(in)]->ants++;
+	i = 0;
+	while (in->ants[i])
+	{
+		ft_printf("ANT: %d, WAYLEN: %d, ANTS: %d\n", in->ants[i]->name, in->ways[in->ants[i]->way]->len, in->ways[in->ants[i]->way]->ants);
+		i++;
+	}
 }

@@ -54,33 +54,6 @@ int			add_way(t_info *in, int *way, int len)
 	return (put_way(in, new_way, len));
 }
 
-//int			add_way(t_info *in, int *way, int distance)
-//{
-//	int *new_way;
-//	int	i;
-//	int j;
-//
-//	new_way = (int *)malloc(sizeof(int) * (distance));
-//	j = 0;
-//	i = in->end;
-//	while (i != in->start)
-//	{
-//		new_way[j] = i;
-//		i = way[i];
-//		j++;
-//	}
-//	new_way[j] = in->start;
-//	i = 0;
-//	while (i < (distance / 2))
-//	{
-//		j = new_way[i];
-//		new_way[i] = new_way[distance - i - 1];
-//		new_way[distance - i - 1] = j;
-//		i++;
-//	}
-//	return (put_way(in, new_way, distance));
-//}
-
 int			add_link(t_info *in, int room1, int room2)
 {
 	t_link	**links;

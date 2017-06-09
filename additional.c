@@ -12,28 +12,6 @@
 
 #include "lemin.h"
 
-void	remove_vertices(t_info *in, int w)
-{
-	int	j;
-	int	i;
-
-	i = 0;
-	while (i < in->ways[w]->len)
-	{
-		if (in->ways[w]->way[i] != in->start && in->ways[w]->way[i] != in->end)
-		{
-			j = 0;
-			while (j < in->size)
-			{
-				in->matrix[in->ways[w]->way[i]][j] = 0;
-				in->matrix[j][in->ways[w]->way[i]] = 0;
-				j++;
-			}
-		}
-		i++;
-	}
-}
-
 char	**clean_input(char **file)
 {
 	char	**input;

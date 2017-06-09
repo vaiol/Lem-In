@@ -43,9 +43,10 @@ static void	print_map(char **map)
 		i++;
 	}
 	i = 0;
-	while (i <= max)
+	while (i < MAP_SIZE)
 	{
-		ft_printf("%s\n", map[i]);
+		if (i <= max)
+			ft_printf("%s\n", map[i]);
 		free(map[i]);
 		i++;
 	}

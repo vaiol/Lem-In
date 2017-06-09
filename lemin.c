@@ -28,7 +28,6 @@ void	addcomm(t_info *in, char *str)
 		in->put_clean = 1;
 }
 
-
 void	add_commands(t_info *in, int last_line, char **file)
 {
 	int	i;
@@ -84,6 +83,6 @@ int		main(void)
 	write_file(in, file, l);
 	print_result(in, l);
 	remove_all(in);
-	sleep(10);
+//	sleep(10);
 	return (0);
 }

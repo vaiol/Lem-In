@@ -12,6 +12,20 @@
 
 #include "lemin.h"
 
+static void	remove_next_next(t_info *in)
+{
+	int	i;
+
+	i = 0;
+	while (in->diffs && in->diffs[i])
+	{
+		free(in->diffs[i]->ways);
+		free(in->diffs[i++]);
+	}
+	if (in->diffs)
+		free(in->diffs);
+}
+
 
 static void	remove_next(t_info *in)
 {
@@ -30,11 +44,14 @@ static void	remove_next(t_info *in)
 	}
 	if (in->all_ways)
 		free(in->all_ways);
+	if (in->ways)
+		free(in->ways);
 	i = 0;
 	while (in->ants && in->ants[i])
 		free(in->ants[i++]);
 	if (in->ants)
 		free(in->ants);
+	remove_next_next(in);
 }
 
 int			remove_all(t_info *in)
@@ -59,11 +76,4 @@ int			remove_all(t_info *in)
 	remove_next(in);
 	free(in);
 	return (0);
-}
-
-void		remove_additional(int *paste, int *distance, int *way)
-{
-	free(paste);
-	free(distance);
-	free(way);
 }
