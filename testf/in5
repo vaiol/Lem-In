@@ -1,4 +1,4 @@
-10
+100
 ##start
 0 16 0
 1 1 5
@@ -47,11 +47,11 @@
 13-14
 14-15
 ##ways
-##map
+#map
 ##moves
 #allways
 ##hide
-#clean
+##clean
 
 5-8
 6-10

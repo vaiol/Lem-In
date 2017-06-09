@@ -47,7 +47,6 @@ void		output_ways(t_info *in)
 	int	i;
 
 	i = 0;
-	sort_all_ways(in->ways);
 	ft_printf("{red}SELECTED WAYS:{eoc}\n");
 	while (in->ways && in->ways[i])
 	{
@@ -122,22 +121,23 @@ int			print_ants(t_info *in)
 {
 	int	exist;
 	int	i;
-	int	ant;
 
-	i = 0;
 	exist = 0;
-	ant = 1;
-	while (i < in->ants_count)
+
+	i=0;
+	while (in->ants[i])
 	{
 		if (check_ant(in, i))
 		{
 			if (exist > 0)
 				ft_printf(" ");
+			int way = in->ants[i]->way;
+			int move = in->ants[i]->move;
 			ft_printf("L%d-%s", in->ants[i]->name,
-					  in->rooms[in->ways[in->ants[i]->way]->way[in->ants[i]->move]]->name);
+					  in->rooms[in->ways[way]->way[move]]->name);
 			exist = 1;
 			in->ants[i]->move++;
-			if (in->ways[in->ants[i]->way]->len <= in->ants[i]->move)
+			if (in->ways[way]->len <= in->ants[i]->move)
 				in->ants[i]->move = -1;
 		}
 		i++;
@@ -191,7 +191,6 @@ void		create_ants(t_info *in)
 				in->ants[i]->way = j;
 				in->ways[j]->ants--;
 				i++;
-				ft_printf("WAYLEN: %d, ANTS: %d\n", in->ways[j]->len, in->ways[j]->ants);
 			}
 			j++;
 		}
@@ -206,10 +205,4 @@ void		create_ants(t_info *in)
 	i = 0;
 	while (i++ < in->ants_count)
 		in->ways[get_bestway(in)]->ants++;
-	i = 0;
-	while (in->ants[i])
-	{
-		ft_printf("ANT: %d, WAYLEN: %d, ANTS: %d\n", in->ants[i]->name, in->ways[in->ants[i]->way]->len, in->ways[in->ants[i]->way]->ants);
-		i++;
-	}
 }
