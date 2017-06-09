@@ -66,6 +66,7 @@ typedef struct	s_info
 	t_room		**rooms;
 	t_link		**links;
 	t_way		**ways;
+	t_way		**all_ways;
 	t_ant		**ants;
 	t_diff		**diffs;
 	char		**input;
@@ -93,6 +94,7 @@ int				remove_all(t_info *in);
 int				find_all_ways(t_info *in, int last);
 void			get_best_ways(t_info *in);
 void			build_matrix(t_info *in);
+void			find_diffs(t_info *in);
 int				visu_diagonal_line(t_room *r1, t_room *r2, char **map);
 int				visu_check(int y, int x, char **map);
 int				visu_check_left(int y, int x, char **map);

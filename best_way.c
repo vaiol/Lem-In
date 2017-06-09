@@ -8,14 +8,14 @@ static int	get_bestway(t_info *in, int diff)
 	int	way;
 
 	best = 0;
-	min = in->ways[0]->len + in->ways[0]->ants;
+	min = INFINITY;
 	i = 0;
 	while (i < in->diffs[diff]->len)
 	{
 		way = in->diffs[diff]->ways[i];
 		if (min > (in->ways[way]->len + in->ways[way]->ants))
 		{
-			best = i;
+			best = way;
 			min = in->ways[way]->len + in->ways[way]->ants;
 		}
 		i++;
@@ -57,9 +57,12 @@ static int	get_count_steps(t_info *in, int diff)
 	while (i < in->diffs[diff]->len)
 	{
 		way = in->diffs[diff]->ways[i];
-		steps = in->ways[way]->ants + in->ways[way]->len - 2;
-		if (max_steps < steps)
-			max_steps = steps;
+		if (in->ways[way]->ants)
+		{
+			steps = in->ways[way]->ants + in->ways[way]->len - 2;
+			if (max_steps < steps)
+				max_steps = steps;
+		}
 		i++;
 	}
 	return (max_steps);
@@ -89,33 +92,6 @@ static int	get_best_diff(t_info *in)
 	return (best);
 }
 
-void	clean_unused_ways(t_info *in, int best)
-{
-	int	i;
-	int	j;
-	int	clean;
-
-	i = 0;
-	while (in->ways[i])
-	{
-		clean = 1;
-		j = 0;
-		while (j < in->diffs[best]->len)
-		{
-			if (in->diffs[best]->ways[j] == i)
-			{
-				clean = 0;
-				break ;
-			}
-			j++;
-		}
-		if (clean)
-			free(in->ways[i]);
-		i++;
-	}
-	free(in->ways);
-}
-
 void	get_best_ways(t_info *in)
 {
 	t_way	**ways;
@@ -128,10 +104,15 @@ void	get_best_ways(t_info *in)
 	while (i < in->diffs[best]->len)
 	{
 		ways[i] = in->ways[in->diffs[best]->ways[i]];
-		in->ways[in->diffs[best]->ways[i]] = NULL;
 		i++;
 	}
 	ways[i] = NULL;
-	clean_unused_ways(in, best);
+	i = 0;
+	while (in->ways[i])
+	{
+		in->ways[i]->ants = 0;
+		i++;
+	}
+	in->all_ways = in->ways;
 	in->ways = ways;
 }

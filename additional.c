@@ -71,6 +71,8 @@ t_info	*create_info(char **file)
 	in->start = -1;
 	in->end = -1;
 	in->rooms = NULL;
+	in->diffs = NULL;
+	in->all_ways = NULL;
 	in->links = NULL;
 	in->ways = NULL;
 	in->ants = NULL;

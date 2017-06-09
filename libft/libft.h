@@ -62,5 +62,6 @@ void			ft_print_memory(const void *addr, size_t size);
 int				ft_printf(const char *restrict format, ...);
 int				get_next_line(const int fd, char **line);
 char			*ft_readfd(int fd);
+void			ft_bubble_sort(int *array, size_t len);
 
 #endif

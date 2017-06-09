@@ -12,26 +12,56 @@
 
 #include "lemin.h"
 
+void	sort_all_ways(t_way **ways)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len;
+	t_way	*tmp;
+
+	len = 0;
+	while (ways[len])
+		len++;
+
+	i = 0;
+	while (i < (len - 1))
+	{
+		j = 0;
+		while (j < (len - i - 1))
+		{
+			if (ways[j]->len > ways[j + 1]->len)
+			{
+				tmp = ways[j];
+				ways[j] = ways[j + 1];
+				ways[j + 1] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void		output_ways(t_info *in)
 {
 	int	j;
 	int	i;
 
 	i = 0;
+	sort_all_ways(in->all_ways);
 	ft_printf("\n{red}ALL WAYS:{eoc}\n");
-	while (in->ways && in->ways[i])
+	while (in->all_ways && in->all_ways[i])
 	{
-		if (in->ways[i]->ants)
+		if (in->all_ways[i]->ants)
 			ft_printf("{green}");
 		else
 			ft_printf("{red}");
 		ft_printf("%d: ", i + 1);
 		j = 0;
-		while (j < in->ways[i]->len)
+		while (j < in->all_ways[i]->len)
 		{
 			if (j > 0)
 				ft_printf("->");
-			ft_printf("%s", in->rooms[in->ways[i]->way[j]]->name);
+			ft_printf("%s", in->rooms[in->all_ways[i]->way[j]]->name);
 			j++;
 		}
 		ft_printf("{eoc}\n");

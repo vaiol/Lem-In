@@ -78,7 +78,8 @@ static int	parse_room(t_info *in, int i)
 
 static int	parse_ant(t_info *in)
 {
-	in->ants_count = ft_atoi(in->input[0]);
+	if (in->input[0])
+		in->ants_count = ft_atoi(in->input[0]);
 	if (in->ants_count <= 0 || !isint(in->input[0]))
 		return (0);
 	return (1);
