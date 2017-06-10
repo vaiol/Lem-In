@@ -175,8 +175,6 @@ void		create_ants(t_info *in)
 	i = 0;
 	while (i++ < in->ants_count)
 		in->ways[get_bestway(in)]->ants++;
-
-
 	i = 0;
 	while (i < in->ants_count)
 	{

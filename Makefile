@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 LIB     = libft/
-NAME    = visu-hex
+NAME    = lem-in
 CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
 
