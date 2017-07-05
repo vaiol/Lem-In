@@ -1,47 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_diffs.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/12 16:45:01 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/12 16:45:02 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-static t_diff	*create_diff(int *arr, int maxlen)
-{
-	t_diff	*diff;
-	int		i;
-
-	diff = (t_diff *)malloc(sizeof(t_diff));
-	diff->ways = (int *)malloc(sizeof(int) * maxlen);
-	diff->len = maxlen;
-	i = 0;
-	while (i < diff->len)
-	{
-		diff->ways[i] = arr[i];
-		i++;
-	}
-	return (diff);
-}
-
-static int		add_diff(t_info *in, int *arr, int maxlen)
-{
-	t_diff	**diffs;
-	int		i;
-	int		len;
-
-	len = 0;
-	while (in->diffs && in->diffs[len])
-		len++;
-	diffs = (t_diff **)malloc(sizeof(t_diff *) * (len + 2));
-	i = 0;
-	while (i < len)
-	{
-		diffs[i] = in->diffs[i];
-		i++;
-	}
-	diffs[i] = create_diff(arr, maxlen);
-	diffs[i + 1] = NULL;
-	if (in->diffs)
-		free(in->diffs);
-	in->diffs = diffs;
-	return (i);
-}
-
-static int		is_parallel(t_info *in, int w1, int w2)
+static int	is_parallel(t_info *in, int w1, int w2)
 {
 	int i;
 	int	j;
@@ -63,14 +34,14 @@ static int		is_parallel(t_info *in, int w1, int w2)
 	return (1);
 }
 
-static int		is_parallel_ways(t_info *in, int *arr, int len, int way)
+static int	is_parallel_ways(t_info *in, int *arr, int len, int way)
 {
 	int i;
 
 	i = 0;
 	while (i < len)
 	{
-		if (!is_parallel(in, arr[i], way))
+		if (arr[i] == way || !is_parallel(in, arr[i], way))
 			return (0);
 		i++;
 	}
@@ -98,11 +69,13 @@ static void	recursion(t_info *in, int *arr, int len, int way)
 		add_diff(in, arr, len);
 }
 
-void		find_diffs(t_info *in)
+void		find_diffs(t_info *in, int last)
 {
 	int	i;
 	int	*arr;
 
+	if (last == 0)
+		return ;
 	i = 0;
 	while (in->ways[i])
 		i++;
@@ -115,4 +88,3 @@ void		find_diffs(t_info *in)
 	}
 	free(arr);
 }
-

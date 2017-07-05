@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_all_ways.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/12 16:45:12 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/12 17:01:09 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 static int	check(int *arr, int index, int room)
@@ -33,13 +45,41 @@ static void	recursion(t_info *in, int *arr, int ind, int room)
 	}
 }
 
+static void	find_straight_path(t_info *in)
+{
+	int	j;
+	int	i;
+
+	i = 0;
+	while (in->ways[i])
+	{
+		if (in->ways[i]->len == 2)
+		{
+			j = 0;
+			while (in->ways[j])
+			{
+				if (i != j)
+				{
+					free(in->ways[j]->way);
+					free(in->ways[j]);
+				}
+				j++;
+			}
+			in->ways[0] = in->ways[i];
+			in->ways[1] = NULL;
+			break ;
+		}
+		i++;
+	}
+}
+
 int			find_all_ways(t_info *in, int last)
 {
 	int	i;
 	int	*arr;
 
-	if (last == 0)
-		return (last);
+	if (last == 0 || in->end == -1 || in->start == -1)
+		return (0);
 	i = 0;
 	while (in->rooms[i])
 		i++;
@@ -49,8 +89,6 @@ int			find_all_ways(t_info *in, int last)
 	free(arr);
 	if (in->ways == NULL)
 		return (0);
-	find_diffs(in);
-	get_best_ways(in);
+	find_straight_path(in);
 	return (last);
 }
-

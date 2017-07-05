@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   visu_diagonal.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/12 16:42:26 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/12 16:42:28 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../lemin.h"
 
 static int	left_d(t_coord r1, t_coord r2, char **map)
@@ -9,9 +21,8 @@ static int	left_d(t_coord r1, t_coord r2, char **map)
 	y = r1.y;
 	while (x <= r2.x && y <= r2.y)
 	{
-		if (!visu_check(y, x, map)) {
+		if (!visu_check(y, x, map))
 			return (0);
-		}
 		x++;
 		y++;
 	}
@@ -65,9 +76,8 @@ static int	right_d(t_coord r1, t_coord r2, char **map)
 	y = r1.y;
 	while (x >= r2.x && y <= r2.y)
 	{
-		if (!visu_check(y, x, map)) {
+		if (!visu_check(y, x, map))
 			return (0);
-		}
 		x--;
 		y++;
 	}
@@ -129,5 +139,3 @@ int			visu_diagonal_line(t_room *r1, t_room *r2, char **map)
 			return (right_diagonal(r2, r1, map));
 	}
 }
-
-

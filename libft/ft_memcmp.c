@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_frexpl.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/20 16:19:38 by astepano          #+#    #+#             */
-/*   Updated: 2017/06/20 16:19:42 by astepano         ###   ########.fr       */
+/*   Created: 2016/12/05 17:48:55 by astepano          #+#    #+#             */
+/*   Updated: 2016/12/05 18:21:53 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pf_float.h"
+#include "libft.h"
 
-/*
-** re-writen original frexpl function from math.h
-*/
-
-long double	pf_frexpl(long double value, int *e)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int			exponent;
+	size_t i;
 
-	if (value == 0.0 || value == -0.0)
+	i = 0;
+	while (i < n)
 	{
-		*e = 0;
-		return (value);
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		i++;
 	}
-	exponent = 0;
-	while (value < 0.5)
-	{
-		value *= 2.0;
-		exponent--;
-	}
-	while (value >= 1.0)
-	{
-		value *= 0.5;
-		exponent++;
-	}
-	*e = exponent;
-	return (value);
+	return (0);
 }

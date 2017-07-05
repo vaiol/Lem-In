@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   visu_put_link.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/12 16:42:44 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/12 16:42:46 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../lemin.h"
 
-static void	horizontal_line(t_room *r1, t_room *r2, char **map)
+static int	horizontal_line(t_room *r1, t_room *r2, char **map)
 {
 	int	y;
 	int x;
@@ -18,15 +30,16 @@ static void	horizontal_line(t_room *r1, t_room *r2, char **map)
 		max = r1->coord_x - 1;
 	}
 	else
-		return ;
+		return (0);
 	while (x < max)
 	{
 		map[y][x] = '-';
 		x++;
 	}
+	return (1);
 }
 
-static void	vertical_line(t_room *r1, t_room *r2, char **map)
+static int	vertical_line(t_room *r1, t_room *r2, char **map)
 {
 	int	y;
 	int x;
@@ -40,16 +53,17 @@ static void	vertical_line(t_room *r1, t_room *r2, char **map)
 	}
 	else if (r1->coord_y > r2->coord_y)
 	{
-		max = r2->coord_y + 1;
-		y = r1->coord_y - 1;
+		y = r2->coord_y + 1;
+		max = r1->coord_y - 1;
 	}
 	else
-		return ;
+		return (0);
 	while (y <= max)
 	{
 		map[y][x] = '|';
 		y++;
 	}
+	return (1);
 }
 
 static int	diagonal(t_room *r1, t_room *r2, char **map)
@@ -66,7 +80,7 @@ static int	diagonal(t_room *r1, t_room *r2, char **map)
 	return (0);
 }
 
-void		visu_put_link(t_info *in, char **map, t_link *link)
+int			visu_put_link(t_info *in, char **map, t_link *link)
 {
 	t_room	*r1;
 	t_room	*r2;
@@ -74,13 +88,9 @@ void		visu_put_link(t_info *in, char **map, t_link *link)
 	r1 = in->rooms[link->room1];
 	r2 = in->rooms[link->room2];
 	if (r1->coord_y == r2->coord_y)
-		horizontal_line(r1, r2, map);
+		return (horizontal_line(r1, r2, map));
 	else if (r1->coord_x == r2->coord_x)
-		vertical_line(r1, r2, map);
+		return (vertical_line(r1, r2, map));
 	else
-	{
-		if (diagonal(r1, r2, map))
-			return;
-//		put_link_rec(in, r1, r2, map);
-	}
+		return (diagonal(r1, r2, map));
 }

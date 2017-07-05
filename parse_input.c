@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/01 14:01:20 by astepano          #+#    #+#             */
-/*   Updated: 2017/04/01 14:01:21 by astepano         ###   ########.fr       */
+/*   Created: 2017/06/12 16:44:03 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/12 16:44:06 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static int	parse_link(t_info *in, int i)
 	ft_arrdel(arr);
 	if (room1 < 0 || room2 < 0)
 		return (0);
-	add_link(in, room1, room2);
+	if (room1 != room2)
+		add_link(in, room1, room2);
 	return (1);
 }
 

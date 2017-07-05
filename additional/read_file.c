@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_frexpl.c                                        :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/20 16:19:38 by astepano          #+#    #+#             */
-/*   Updated: 2017/06/20 16:19:42 by astepano         ###   ########.fr       */
+/*   Created: 2017/06/20 16:32:12 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/20 16:32:13 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pf_float.h"
+#include "../lemin.h"
 
-/*
-** re-writen original frexpl function from math.h
-*/
-
-long double	pf_frexpl(long double value, int *e)
+char	**read_file(void)
 {
-	int			exponent;
+	char	**input;
+	char	*file;
 
-	if (value == 0.0 || value == -0.0)
-	{
-		*e = 0;
-		return (value);
-	}
-	exponent = 0;
-	while (value < 0.5)
-	{
-		value *= 2.0;
-		exponent--;
-	}
-	while (value >= 1.0)
-	{
-		value *= 0.5;
-		exponent++;
-	}
-	*e = exponent;
-	return (value);
+	file = ft_readfd(FD);
+	input = ft_strsplit(file, '\n');
+	free(file);
+	return (input);
 }

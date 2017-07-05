@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_frexpl.c                                        :+:      :+:    :+:   */
+/*   add_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/20 16:19:38 by astepano          #+#    #+#             */
-/*   Updated: 2017/06/20 16:19:42 by astepano         ###   ########.fr       */
+/*   Created: 2017/06/20 16:31:27 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/20 16:31:28 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pf_float.h"
+#include "../lemin.h"
 
-/*
-** re-writen original frexpl function from math.h
-*/
-
-long double	pf_frexpl(long double value, int *e)
+int		add_command(t_info *in, int i, int room)
 {
-	int			exponent;
-
-	if (value == 0.0 || value == -0.0)
+	if (ft_strequ(in->input[i - 1], "##start"))
 	{
-		*e = 0;
-		return (value);
+		if (in->start != -1)
+			return (0);
+		in->start = room;
+		return (1);
 	}
-	exponent = 0;
-	while (value < 0.5)
+	else if (ft_strequ(in->input[i - 1], "##end"))
 	{
-		value *= 2.0;
-		exponent--;
+		if (in->end != -1)
+			return (0);
+		in->end = room;
+		return (1);
 	}
-	while (value >= 1.0)
-	{
-		value *= 0.5;
-		exponent++;
-	}
-	*e = exponent;
-	return (value);
+	return (0);
 }

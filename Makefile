@@ -15,12 +15,20 @@ NAME    = lem-in
 CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
 
+H       = lemin.h
+
+OUT     = output/output_
+ADD     = additional/
 VISU    = visu/visu_
-SRCS    = lemin.c parse_input.c add_element.c additional.c check_data.c    \
-            find_all_ways.c free_memory.c matrix.c print_result.c best_way.c \
-            find_diffs.c \
+SRCS    = lemin.c parse_input.c find_all_ways.c remove_all.c build_matrix.c \
+            get_best_ways.c find_diffs.c create_ants.c parse_commands.c \
+            $(ADD)add_command.c $(ADD)add_diff.c $(ADD)add_link.c \
+            $(ADD)add_room.c $(ADD)add_way.c $(ADD)check_data.c \
+            $(ADD)create_info.c $(ADD)read_file.c \
+            $(OUT)all_ways.c $(OUT)file.c $(OUT)result.c $(OUT)ways.c \
+            $(OUT)ant_moves.c $(OUT)ant_moves_add.c \
             $(VISU)diagonal.c $(VISU)diagonal_checks.c $(VISU)put_link.c \
-             $(VISU)put_map.c
+            $(VISU)put_map.c $(VISU)line.c $(VISU)add_diagonal.c
 
 OBJS    = $(SRCS:.c=.o)
 
@@ -35,7 +43,7 @@ $(NAME): $(OBJS)
 
 .c.o:
 	@printf "[CC] %s\n" $<
-	@$(CC) $(CFLAGS) -c $<  -o $@
+	@$(CC) $(CFLAGS) -I $(H) -c $<  -o $@
 
 clean:
 	@printf "[RM] objects\n"

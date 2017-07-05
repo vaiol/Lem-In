@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.h                                           :+:      :+:    :+:   */
+/*   lemin.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/02 01:43:06 by astepano          #+#    #+#             */
-/*   Updated: 2017/04/02 01:43:08 by astepano         ###   ########.fr       */
+/*   Created: 2017/06/12 16:44:43 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/12 16:44:44 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEM_IN_H
-# define LEM_IN_H
+#ifndef LEMIN_H
+# define LEMIN_H
 
 # define FD 0
 # define MAP_SIZE 80
@@ -74,39 +74,49 @@ typedef struct	s_info
 	int			size;
 	int			put_map;
 	int			put_moves;
-	int 		put_ways;
+	int			put_ways;
 	int			put_all_ways;
 	int			put_hide;
 	int			put_clean;
+	int			put_ant_moves;
+	int			put_ants;
 }				t_info;
 
 int				iscommand(char *str);
 int				iscomment(char *str);
 int				isint(char *str);
 int				room_exist(t_info *in, char **arr);
-char			**clean_input(char **file);
 t_info			*create_info(char **file);
 char			**read_file(void);
-void			write_file(t_info *in, char **file, int last_line);
+void			output_file(t_info *in, char **file, int last_line);
 int				add_link(t_info *in, int room1, int room2);
 int				add_room(t_info *in, char **arr);
 int				add_way(t_info *in, int *way, int len);
 int				add_command(t_info *in, int i, int room);
+int				add_diff(t_info *in, int *arr, int maxlen);
 int				parse_input(t_info *in);
 void			output_all_ways(t_info *in);
 void			output_ways(t_info *in);
-int				print_ants(t_info *in);
-void			create_ants(t_info *in);
+void			output_result(t_info *in, int last, char **file);
+int				output_ant_moves(t_info *in);
+void			output_res(t_info *in, int moves, int **am);
+void			create_ants(t_info *in, int last);
 int				remove_all(t_info *in);
 int				find_all_ways(t_info *in, int last);
-void			get_best_ways(t_info *in);
+void			get_best_ways(t_info *in, int last);
 void			build_matrix(t_info *in);
-void			find_diffs(t_info *in);
+void			find_diffs(t_info *in, int last);
+void			parse_commands(t_info *in, int last_line, char **file);
 int				visu_diagonal_line(t_room *r1, t_room *r2, char **map);
 int				visu_check(int y, int x, char **map);
 int				visu_check_left(int y, int x, char **map);
 int				visu_check_right(int y, int x, char **map);
-void			visu_put_link(t_info *in, char **map, t_link *link);
+int				visu_put_link(t_info *in, char **map, t_link *link);
 void			visu_put_map(t_info *in);
+void			visu_add_lines(int *links, t_info *in, char **map);
+int				visu_rdd(int x, t_room *r1, t_room *r2, char **map);
+int				visu_rud(int x, t_room *r1, t_room *r2, char **map);
+int				visu_ldd(int x, t_room *r1, t_room *r2, char **map);
+int				visu_lud(int x, t_room *r1, t_room *r2, char **map);
 
 #endif

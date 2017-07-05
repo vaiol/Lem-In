@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_best_ways.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/12 16:44:53 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/12 16:44:54 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 static int	get_bestway(t_info *in, int diff)
@@ -44,13 +56,11 @@ static int	get_count_steps(t_info *in, int diff)
 	int	steps;
 	int	max_steps;
 
-
 	i = 0;
-	while (i < in->ants_count)
+	while (i++ < in->ants_count)
 	{
 		way = get_bestway(in, diff);
 		in->ways[way]->ants++;
-		i++;
 	}
 	i = 0;
 	max_steps = -1;
@@ -92,12 +102,14 @@ static int	get_best_diff(t_info *in)
 	return (best);
 }
 
-void	get_best_ways(t_info *in)
+void		get_best_ways(t_info *in, int last)
 {
 	t_way	**ways;
 	int		best;
 	int		i;
 
+	if (last == 0)
+		return ;
 	best = get_best_diff(in);
 	ways = (t_way **)malloc(sizeof(t_way *) * (in->diffs[best]->len + 1));
 	i = 0;

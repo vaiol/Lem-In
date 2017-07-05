@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   additional.c                                       :+:      :+:    :+:   */
+/*   create_info.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/02 01:44:01 by astepano          #+#    #+#             */
-/*   Updated: 2017/04/02 01:44:03 by astepano         ###   ########.fr       */
+/*   Created: 2017/06/20 16:32:05 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/20 16:32:06 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lemin.h"
+#include "../lemin.h"
 
-char	**clean_input(char **file)
+static char	**clean_input(char **file)
 {
 	char	**input;
 	int		i;
@@ -40,7 +40,7 @@ char	**clean_input(char **file)
 	return (input);
 }
 
-t_info	*create_info(char **file)
+t_info		*create_info(char **file)
 {
 	t_info	*in;
 
@@ -62,40 +62,7 @@ t_info	*create_info(char **file)
 	in->put_moves = 0;
 	in->put_ways = 0;
 	in->put_clean = 0;
+	in->put_ant_moves = 0;
+	in->put_ants = 0;
 	return (in);
-}
-
-char	**read_file(void)
-{
-	char	**input;
-	char	*file;
-
-	file = ft_readfd(FD);
-	input = ft_strsplit(file, '\n');
-	free(file);
-	return (input);
-}
-
-void write_file(t_info *in, char **file, int last_line)
-{
-	int	i;
-
-	i = 0;
-	if (last_line == 0)
-	{
-		ft_printf("ERROR\n");
-		return ;
-	}
-	while (file[i])
-	{
-		if (iscomment(file[i]))
-			last_line++;
-		if (!in->put_hide && (!in->put_clean || !iscomment(file[i])) && i < last_line)
-			ft_printf("%s\n", file[i]);
-		free(file[i]);
-		i++;
-	}
-	if (!in->put_hide)
-		ft_printf("\n");
-	free(file);
 }

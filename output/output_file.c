@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_frexpl.c                                        :+:      :+:    :+:   */
+/*   output_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/20 16:19:38 by astepano          #+#    #+#             */
-/*   Updated: 2017/06/20 16:19:42 by astepano         ###   ########.fr       */
+/*   Created: 2017/06/12 16:43:37 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/12 16:55:59 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pf_float.h"
+#include "../lemin.h"
 
-/*
-** re-writen original frexpl function from math.h
-*/
-
-long double	pf_frexpl(long double value, int *e)
+void	output_file(t_info *in, char **file, int last_line)
 {
-	int			exponent;
+	int	i;
 
-	if (value == 0.0 || value == -0.0)
+	i = 0;
+	if (last_line == 0)
 	{
-		*e = 0;
-		return (value);
+		ft_printf("ERROR\n");
+		return ;
 	}
-	exponent = 0;
-	while (value < 0.5)
+	while (file[i])
 	{
-		value *= 2.0;
-		exponent--;
+		if (iscomment(file[i]))
+			last_line++;
+		if (!in->put_hide && (!in->put_clean
+					|| !iscomment(file[i])) && i < last_line)
+			ft_printf("%s\n", file[i]);
+		free(file[i]);
+		i++;
 	}
-	while (value >= 1.0)
-	{
-		value *= 0.5;
-		exponent++;
-	}
-	*e = exponent;
-	return (value);
+	if (!in->put_hide)
+		ft_printf("\n");
+	free(file);
 }

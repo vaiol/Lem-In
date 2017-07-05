@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   visu_put_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/12 16:42:54 by astepano          #+#    #+#             */
+/*   Updated: 2017/06/12 16:42:55 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../lemin.h"
 
 static char	**create_map(void)
@@ -23,11 +35,11 @@ static char	**create_map(void)
 	return (map);
 }
 
-static void	print_map(char **map)
+static int	get_max_line(char **map)
 {
-	int	max;
-	int	i;
 	int	j;
+	int i;
+	int	max;
 
 	max = 0;
 	i = 0;
@@ -42,6 +54,15 @@ static void	print_map(char **map)
 		}
 		i++;
 	}
+	return (max);
+}
+
+static void	print_map(char **map)
+{
+	int	max;
+	int	i;
+
+	max = get_max_line(map);
 	i = 0;
 	while (i < MAP_SIZE)
 	{
@@ -72,26 +93,28 @@ static void	put_room(char **map, t_room *room)
 	}
 	if (x + i < MAP_SIZE)
 		map[y][x + i] = ']';
-
 }
 
-void	visu_put_map(t_info *in)
+void		visu_put_map(t_info *in)
 {
+	int		*links;
 	char	**map;
 	int		i;
 
 	map = create_map();
 	i = 0;
 	while (in->rooms[i])
-	{
-		put_room(map, in->rooms[i]);
+		put_room(map, in->rooms[i++]);
+	i = 0;
+	while (in->links[i])
 		i++;
-	}
+	links = (int *)malloc(sizeof(int) * i);
 	i = 0;
 	while (in->links[i])
 	{
-		visu_put_link(in, map, in->links[i]);
+		links[i] = visu_put_link(in, map, in->links[i]);
 		i++;
 	}
+	visu_add_lines(links, in, map);
 	print_map(map);
 }

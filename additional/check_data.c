@@ -6,11 +6,11 @@
 /*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 01:43:50 by astepano          #+#    #+#             */
-/*   Updated: 2017/04/02 01:43:51 by astepano         ###   ########.fr       */
+/*   Updated: 2017/06/20 16:32:00 by astepano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lemin.h"
+#include "../lemin.h"
 
 int		iscommand(char *str)
 {
